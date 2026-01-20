@@ -98,7 +98,7 @@ yarn start:dev  //Desarrollo vivo.
 
 Comparativa:
 
-![image.png](Creacio%CC%81n%20del%20proyecto%20NestJS,%20con%20Yarn/image.png)
+![image.png](comparativa.png)
 
 El equivalente de ***npm install*** es ***yarn.***
 
