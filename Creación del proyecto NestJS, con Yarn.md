@@ -69,6 +69,7 @@ Instalación:
 
 ```jsx
 npm install --global yarn
+yarn set version stable
 ```
 
 Iniciar un proyecto e instalar lo básico para un servidor express:
