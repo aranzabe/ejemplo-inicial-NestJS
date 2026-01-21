@@ -21,8 +21,8 @@ import { UpdateUserDto } from './dto/update-user.dto';
 // @UsePipes(ValidationPipe) // Se aplica a todos los métodos del controlador
 
 @UsePipes(new ValidationPipe({  //Validación aplicada a todos los métodos del controlador.
-          whitelist: true, //Rechaza campos no definidos en el DTO
-          forbidNonWhitelisted: true, //Lanza un error si hay campos extra
+          whitelist: true, //Rechaza campos no definidos en el DTO. Borra automáticamente cualquier campo que no exista en tu DTO.
+          forbidNonWhitelisted: true, //Lanza un error si hay campos extra. Lanza un 400 Bad Request si llega un campo que no está en el DTO.
           transform: true //Convierte tipos automáticamente
       })) // Se aplica a todos los métodos del controlador
 
@@ -58,7 +58,7 @@ export class UsersController {
 
   @Put(':id')
   //@UsePipes(ValidationPipe)
-  @UsePipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }))
+  //@UsePipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }))
   updatePut(@Param('id', ParseIntPipe) id: number, @Body() updateUserDto: UpdateUserDto) {
     console.log('PUT body:', updateUserDto);
     return this.usersService.updatePut(id, updateUserDto);

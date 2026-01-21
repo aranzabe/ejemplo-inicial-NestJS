@@ -58,18 +58,25 @@ export class UsersService {
   }
 
   updatePut(id: number, updateUserDto: UpdateUserDto) {
-    const userIndex = this.users.findIndex(user => user.id === id);
-    
+      const userIndex = this.users.findIndex(user => user.id === id);
+
       if (userIndex === -1) {
-        return { msg: 'User not found' };
-        //throw new NotFoundException(`Usuario con ID ${id} no encontrado`);
+        throw new NotFoundException(`Usuario con ID ${userIndex} no encontrado`);
       }
-    
+
+      const existingUser = this.users[userIndex];
+
+      //Solo actualizamos las propiedades que vienen en updateUserDto
       //Actualizar solo los campos proporcionados en updateUserDto
       //Operador spread (...): Se mantiene el objeto original y solo se sobrescriben los valores proporcionados en updateUserDto, dejando los demás intactos.
       //Utiliza el operador spread (...) para fusionar el usuario existente con los nuevos datos 
-      this.users[userIndex] = { ...this.users[userIndex], ...updateUserDto };
-    
+      this.users[userIndex] = {
+        ...existingUser,
+        ...Object.fromEntries(
+          Object.entries(updateUserDto).filter(([_, value]) => value !== undefined)
+        ),
+      };
+
       return this.users[userIndex];
   }
 
