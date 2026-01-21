@@ -48,7 +48,7 @@ node -v
 Debe mostrar algo como:
 
 ```
-v20.x.x
+v24.x.x
 ```
 
 ---
@@ -78,6 +78,17 @@ yarn -v
 ```powershell
 corepack enable
 ```
+¿Qué es Corepack?
+
+Corepack es una herramienta incluida con Node (desde v16.10+ y v18 LTS en adelante) que sirve para gestionar automáticamente los gestores de paquetes modernos, como Yarn y PNPM, sin tener que instalarlos globalmente con npm.
+
+En otras palabras:
+
+- Corepack actúa como “puente” entre Node y Yarn/PNPM.
+
+- Permite que cada versión de Node tenga su propia versión controlada de Yarn o PNPM, evitando conflictos entre proyectos.
+
+- Básicamente, Corepack se encarga de que tu proyecto siempre use la versión correcta de Yarn/Pnpm según lo definido por Node o tu proyecto.
 
 Si falla con `EPERM`, es porque no estás en modo admin.
 
